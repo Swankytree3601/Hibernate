@@ -70,7 +70,7 @@ public class MongoDBConnection {
             System.out.println("\n3. Videojuegos con precio > 50:");
             FindIterable<Document> caros = collection.find(gt("precio", 50));
             for (Document doc : caros) {
-                System.out.println("  - " + doc.getString("titulo") + " - $" + doc.getDouble("precio"));
+                System.out.println("  - " + doc.getString("titulo") + " - " + doc.getDouble("precio") + " €");
             }
 
             // Find 4: Filtro por país de desarrolladora

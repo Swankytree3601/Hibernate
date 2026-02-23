@@ -30,7 +30,7 @@ public class CasoUsoManager {
 
     // SELECCIONES SIMPLES
     public void seleccionSimpleVideojuegos() {
-        System.out.println("\n--- SELECCIÓN SIMPLE: Todos los videojuegos ---");
+        System.out.println("\nSelect simple: Todos los videojuegos");
         Query<Videojuego> query = session.createQuery("FROM Videojuego", Videojuego.class);
         List<Videojuego> videojuegos = query.list();
         for (Videojuego v : videojuegos) {
@@ -39,7 +39,7 @@ public class CasoUsoManager {
     }
 
     public void seleccionSimpleJugadores() {
-        System.out.println("\n--- SELECCIÓN SIMPLE: Jugadores registrados en 2024 ---");
+        System.out.println("\nSelect simple: Jugadores registrados en 2024");
         Query<Jugador> query = session.createQuery(
                 "FROM Jugador j WHERE YEAR(j.fechaRegistro) = :year", Jugador.class);
         query.setParameter("year", 2024);
@@ -50,7 +50,7 @@ public class CasoUsoManager {
     }
 
     public void seleccionSimpleDesarrolladoras() {
-        System.out.println("\n--- SELECCIÓN SIMPLE: Desarrolladoras de USA ---");
+        System.out.println("\nSelect simple: Desarrolladoras de USA");
         Query<Desarrolladora> query = session.createQuery(
                 "FROM Desarrolladora d WHERE d.pais = :pais", Desarrolladora.class);
         query.setParameter("pais", "USA");
@@ -62,7 +62,7 @@ public class CasoUsoManager {
 
     // JOINS SOBRE DOS O MÁS TABLAS
     public void joinVideojuegoDesarrolladora() {
-        System.out.println("\n--- JOIN: Videojuegos con su desarrolladora ---");
+        System.out.println("\nJOIN: Videojuegos con su desarrolladora");
         String hql = "SELECT v.titulo, d.nombre, d.pais, v.precio " +
                 "FROM Videojuego v " +
                 "JOIN v.desarrolladora d";
@@ -72,12 +72,12 @@ public class CasoUsoManager {
             System.out.println("Juego: " + fila[0] +
                     ", Desarrolladora: " + fila[1] +
                     ", País: " + fila[2] +
-                    ", Precio: " + fila[3]);
+                    ", Precio: " + fila[3] + " €");
         }
     }
 
     public void joinCompraJugadorVideojuego() {
-        System.out.println("\n--- JOIN: Compras con jugador y videojuego ---");
+        System.out.println("\nJOIN: Compras con jugador y videojuego");
         String hql = "SELECT c.fechaCompra, j.nickname, v.titulo, c.precioFinal " +
                 "FROM Compra c " +
                 "JOIN c.jugador j " +
@@ -94,7 +94,7 @@ public class CasoUsoManager {
     }
 
     public void joinTriple() {
-        System.out.println("\n--- JOIN TRIPLE: Información completa de compras ---");
+        System.out.println("\nJOIN triple: Información completa de compras");
         String hql = "SELECT j.nickname, v.titulo, d.nombre, c.fechaCompra, c.precioFinal " +
                 "FROM Compra c " +
                 "JOIN c.jugador j " +
@@ -116,7 +116,7 @@ public class CasoUsoManager {
     // SENTENCIAS DML
 
     public void insertarDatosEjemplo() {
-        System.out.println("\n--- DML INSERT: Insertando datos de ejemplo ---");
+        System.out.println("\nDML Insert: Insertando datos de ejemplo");
 
         // Verificar si ya existen datos
         Query<Long> countQuery = session.createQuery("SELECT COUNT(d) FROM Desarrolladora d", Long.class);
@@ -149,8 +149,8 @@ public class CasoUsoManager {
         session.save(v3);
 
         // Insertar jugadores
-        Jugador j1 = new Jugador("gamer123", "gamer@email.com", new Date());
-        Jugador j2 = new Jugador("proplayer", "pro@email.com", new Date());
+        Jugador j1 = new Jugador("Coscu777", "gamer@email.com", new Date());
+        Jugador j2 = new Jugador("Manolo1234", "pro@email.com", new Date());
 
         session.save(j1);
         session.save(j2);
@@ -168,7 +168,7 @@ public class CasoUsoManager {
     }
 
     public void actualizarPrecios() {
-        System.out.println("\n--- DML UPDATE: Actualizando precios ---");
+        System.out.println("\nDML update: Actualizando precios");
 
         String hql = "UPDATE Videojuego v " +
                 "SET v.precio = v.precio * 1.1 " +
@@ -182,7 +182,7 @@ public class CasoUsoManager {
     }
 
     public void eliminarComprasAntiguas() {
-        System.out.println("\n--- DML DELETE: Eliminando compras antiguas ---");
+        System.out.println("\nDML Delete: Eliminando compras antiguas");
 
         String hql = "DELETE FROM Compra c " +
                 "WHERE c.fechaCompra < :fechaLimite";
@@ -197,7 +197,7 @@ public class CasoUsoManager {
     // PROCEDIMIENTO / FUNCIÓN
 
     public void procedimientoEstadisticasJugador(String nickname) {
-        System.out.println("\n--- PROCEDIMIENTO: Estadísticas del jugador " + nickname + " ---");
+        System.out.println("\nProcedimientos: Estadísticas del jugador " + nickname);
 
         // Total gastado por jugador
         String hqlTotalGastado =
@@ -238,15 +238,15 @@ public class CasoUsoManager {
 
         // Mostrar resultados
         System.out.println("Jugador: " + nickname);
-        System.out.println("Total gastado: $" + (totalGastado != null ? totalGastado : BigDecimal.ZERO));
+        System.out.println("Total gastado: " + (totalGastado != null ? totalGastado : BigDecimal.ZERO) + "€");
         System.out.println("Número de juegos comprados: " + (numJuegos != null ? numJuegos : 0));
         if (juegoCaro != null) {
-            System.out.println("Juego más caro: " + juegoCaro[0] + " ($" + juegoCaro[1] + ")");
+            System.out.println("Juego más caro: " + juegoCaro[0] + " (" + juegoCaro[1] + " €)");
         }
     }
 
     public void funcionTopJuegosPorGenero(String genero, int limite) {
-        System.out.println("\n--- FUNCIÓN: Top " + limite + " juegos del género " + genero + " ---");
+        System.out.println("\nFunción: Top " + limite + " juegos del género " + genero);
 
         String hql =
                 "SELECT v.titulo, d.nombre, v.precio, COUNT(c) as numCompras " +
@@ -266,7 +266,7 @@ public class CasoUsoManager {
             Object[] fila = resultados.get(i);
             System.out.println((i+1) + ". " + fila[0] +
                     " - " + fila[1] +
-                    " ($" + fila[2] + ")" +
+                    " (" + fila[2] + " €)" +
                     " - Compras: " + fila[3]);
         }
     }

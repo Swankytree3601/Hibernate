@@ -16,7 +16,7 @@ public class HibernateUtil {
             // Cargar propiedades del archivo database.properties
             Properties props = new Properties();
             try (InputStream input = HibernateUtil.class.getClassLoader()
-                    .getResourceAsStream("database.properties")) {
+                    .getResourceAsStream("/database.properties")) {
                 if (input != null) {
                     props.load(input);
                     System.out.println("database.properties cargado correctamente");
@@ -37,20 +37,13 @@ public class HibernateUtil {
             configuration.setProperty("hibernate.connection.username", props.getProperty("db.usuario"));
             configuration.setProperty("hibernate.connection.password", props.getProperty("db.password"));
 
-            // Configurar dialecto
-            configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+            // Configurar dialecto (MySQLDialect en lugar de MySQL8Dialect)
+            configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 
             // Configurar opciones adicionales
             configuration.setProperty("hibernate.show_sql", "true");
             configuration.setProperty("hibernate.format_sql", "true");
-            configuration.setProperty("hibernate.hbm2ddl.auto", "validate");
-
-            // Configurar pool de conexiones (opcional)
-            configuration.setProperty("hibernate.c3p0.min_size", "5");
-            configuration.setProperty("hibernate.c3p0.max_size", "20");
-            configuration.setProperty("hibernate.c3p0.timeout", "300");
-            configuration.setProperty("hibernate.c3p0.max_statements", "50");
-            configuration.setProperty("hibernate.c3p0.idle_test_period", "3000");
+            configuration.setProperty("hibernate.hbm2ddl.auto", "update"); // Cambiado de "validate" a "update"
 
             // Añadir clases anotadas
             configuration.addAnnotatedClass(models.Desarrolladora.class);

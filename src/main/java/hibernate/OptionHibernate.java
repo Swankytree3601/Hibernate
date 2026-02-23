@@ -132,21 +132,21 @@ public class OptionHibernate {
         try {
             manager.abrirSession();
 
-            System.out.println("\n🔹 1. INSERTANDO DATOS DE EJEMPLO...");
+            System.out.println("\n1. INSERTANDO DATOS DE EJEMPLO...");
             manager.insertarDatosEjemplo();
 
-            System.out.println("\n🔹 2. SELECCIONES SIMPLES...");
+            System.out.println("\n2. SELECCIONES SIMPLES...");
             manager.seleccionSimpleVideojuegos();
             manager.seleccionSimpleJugadores();
 
-            System.out.println("\n🔹 3. JOINS...");
+            System.out.println("\n3. JOINS...");
             manager.joinVideojuegoDesarrolladora();
             manager.joinCompraJugadorVideojuego();
 
-            System.out.println("\n🔹 4. ACTUALIZACIONES...");
+            System.out.println("\n4. ACTUALIZACIONES...");
             manager.actualizarPrecios();
 
-            System.out.println("\n🔹 5. PROCEDIMIENTOS...");
+            System.out.println("\n5. PROCEDIMIENTOS...");
             manager.procedimientoEstadisticasJugador("gamer123");
             manager.funcionTopJuegosPorGenero("Acción", 3);
 

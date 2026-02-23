@@ -7,7 +7,7 @@ public class BaseXConnection {
     public static void main(String[] args) {
         try (ClientSession session = new ClientSession("localhost", 1984, "admin", "admin")) {
 
-            System.out.println("=== CONEXIÓN A BASEX ===");
+            System.out.println("CONEXIÓN A BASEX");
             System.out.println("Conectado a BaseX correctamente");
 
             // Crear una base de datos de ejemplo si no existe
@@ -45,7 +45,7 @@ public class BaseXConnection {
             session.execute("ADD /videojuegos.xml " + xmlData);
 
             // EJEMPLOS DE XPATH
-            System.out.println("\n=== EJEMPLOS XPATH ===");
+            System.out.println("\nEJEMPLOS XPATH");
 
             // XPath 1: Seleccionar todos los títulos
             String xpath1 = "//titulo";
@@ -60,7 +60,7 @@ public class BaseXConnection {
             System.out.println(result2);
 
             // EJEMPLOS DE XQUERY
-            System.out.println("\n=== EJEMPLOS XQUERY ===");
+            System.out.println("\nEjemplos XQuery ===");
 
             // XQuery 1: Consulta con join implícito
             String xquery1 =

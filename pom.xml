@@ -20,35 +20,35 @@
   </properties>
 
   <dependencies>
-    <!-- HIBERNATE (JPA) - Versión compatible con Java 21 -->
+    <!-- Hibernate (JPA) - Versión compatible con Java 21 -->
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>6.4.0.Final</version>
     </dependency>
 
-    <!-- MYSQL CONNECTOR -->
+    <!-- MySQL Connetor -->
     <dependency>
       <groupId>com.mysql</groupId>
       <artifactId>mysql-connector-j</artifactId>
       <version>8.2.0</version>
     </dependency>
 
-    <!-- MONGODB DRIVER -->
+    <!-- MongoDB Driver -->
     <dependency>
       <groupId>org.mongodb</groupId>
       <artifactId>mongodb-driver-sync</artifactId>
       <version>4.11.1</version>
     </dependency>
 
-    <!-- BASEX CLIENT -->
+    <!-- BaseX Client -->
     <dependency>
       <groupId>org.basex</groupId>
       <artifactId>basex</artifactId>
       <version>10.7</version> <!-- Usa 10.7 que es más estable -->
     </dependency>
 
-    <!-- LOGGING (solo lo necesario) -->
+    <!-- Loggin -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
@@ -68,6 +68,14 @@
         </configuration>
       </plugin>
     </plugins>
-  </build>
 
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
