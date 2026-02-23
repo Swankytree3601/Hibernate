@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "https://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-
-        <!-- Conexión -->
+        <!-- Configuración de conexión -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/sys?useSSL=false&amp;serverTimezone=UTC
-        </property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/videojuegos?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">1234</property>
 
-        <!-- Dialecto -->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Dialecto de MySQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
-        <!-- Debug -->
+        <!-- Mostrar SQL en consola -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
-        <!-- IMPORTANTE: no tocar el esquema -->
-        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <!-- Estrategia de generación de esquema -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <!-- Entidades -->
+        <!-- Pool de conexiones -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+
+        <!-- Clases entity -->
         <mapping class="models.Desarrolladora"/>
         <mapping class="models.Videojuego"/>
         <mapping class="models.Jugador"/>
         <mapping class="models.Compra"/>
-        <mapping class="models.Valoracion"/>
-
     </session-factory>
 </hibernate-configuration>
