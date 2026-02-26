@@ -45,7 +45,7 @@
     <dependency>
       <groupId>org.basex</groupId>
       <artifactId>basex</artifactId>
-      <version>10.7</version> <!-- Usa 10.7 que es más estable -->
+      <version>10.7</version>
     </dependency>
 
     <!-- Loggin -->

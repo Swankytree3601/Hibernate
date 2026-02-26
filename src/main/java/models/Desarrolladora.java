@@ -9,7 +9,7 @@ public class Desarrolladora {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "iddesarrolladora") // Cambiado para coincidir con la BD
+    @Column(name = "iddesarrolladora")
     private int id;
 
     @Column(name = "nombre", nullable = false, length = 100)
@@ -25,7 +25,8 @@ public class Desarrolladora {
     private List<Videojuego> videojuegos;
 
     // Constructores
-    public Desarrolladora() {}
+    public Desarrolladora(){ //Hibernate necesita un constructor vacío
+    }
 
     public Desarrolladora(String nombre, String pais, int fundacion) {
         this.nombre = nombre;

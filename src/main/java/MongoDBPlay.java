@@ -1,13 +1,10 @@
-package mongodb;
-
 import com.mongodb.client.*;
-import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import java.util.Arrays;
 import java.util.Scanner;
 import static com.mongodb.client.model.Filters.*;
 
-public class MongoDBConnection {
+public class MongoDBPlay {
     public static void main(String[] args) {
         try {
             // Conexión a MongoDB
@@ -15,8 +12,7 @@ public class MongoDBConnection {
             MongoDatabase database = mongoClient.getDatabase("videojuegosDB");
             MongoCollection<Document> collection = database.getCollection("videojuegos");
 
-            System.out.println("=== CONEXIÓN A MONGODB ===");
-            System.out.println("Conectado a MongoDB correctamente");
+            System.out.println("Conexión a MongoDB");
 
             // Limpiar colección anterior
             collection.deleteMany(new Document());
@@ -25,32 +21,32 @@ public class MongoDBConnection {
             Document juego1 = new Document("titulo", "The Last of Us")
                     .append("genero", "Acción")
                     .append("precio", 59.99)
-                    .append("desarrolladora", new Document("nombre", "Naughty Dog")
+                    .append("desarrolladora", new Document("nombre", "Naughty Dog") //Desarrolladora anidada
                             .append("pais", "USA")
                             .append("fundacion", 1984))
-                    .append("jugadores", Arrays.asList("jugador1", "jugador2"));
+                    .append("jugadores", Arrays.asList("Swanky", "Tree"));
 
             Document juego2 = new Document("titulo", "God of War")
                     .append("genero", "Aventura")
                     .append("precio", 49.99)
-                    .append("desarrolladora", new Document("nombre", "Santa Monica")
+                    .append("desarrolladora", new Document("nombre", "Santa Monica") //Desarrolladora anidada
                             .append("pais", "USA")
                             .append("fundacion", 1999))
-                    .append("jugadores", Arrays.asList("jugador3"));
+                    .append("jugadores", Arrays.asList("Kratos"));
 
             Document juego3 = new Document("titulo", "FIFA 24")
                     .append("genero", "Deportes")
                     .append("precio", 69.99)
-                    .append("desarrolladora", new Document("nombre", "EA Sports")
+                    .append("desarrolladora", new Document("nombre", "EA Sports") //Género de videojuegos
                             .append("pais", "Canadá")
                             .append("fundacion", 1991))
-                    .append("jugadores", Arrays.asList("jugador1", "jugador4", "jugador5"));
+                    .append("jugadores", Arrays.asList("Messirve", "Coscu", "Momo"));
 
             collection.insertMany(Arrays.asList(juego1, juego2, juego3));
             System.out.println("Documentos insertados correctamente");
 
-            // EJEMPLOS DE FIND
-            System.out.println("\n=== EJEMPLOS FIND ===");
+            // Ejemplos del find
+            System.out.println("\nEjemplos Find");
 
             // Find 1: Todos los documentos
             System.out.println("1. Todos los videojuegos:");
@@ -114,6 +110,7 @@ public class MongoDBConnection {
 
             FindIterable<Document> personalizado = collection.find(eq(campo, valor));
             System.out.println("Resultados:");
+
             for (Document doc : personalizado) {
                 System.out.println("  - " + doc.toJson());
             }

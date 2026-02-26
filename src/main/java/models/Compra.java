@@ -10,15 +10,15 @@ public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCompra") // Cambiado para coincidir con la BD
+    @Column(name = "idCompra")
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "jugador_id", nullable = false) // Coincide con la BD
+    @JoinColumn(name = "jugador_id", nullable = false)
     private Jugador jugador;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "videojuego_id", nullable = false) // Coincide con la BD
+    @JoinColumn(name = "videojuego_id", nullable = false)
     private Videojuego videojuego;
 
     @Column(name = "fechaCompra", nullable = false)
@@ -28,9 +28,10 @@ public class Compra {
     @Column(name = "precioFinal", nullable = false, precision = 6, scale = 2)
     private BigDecimal precioFinal;
 
-    // Constructores
-    public Compra() {}
+    public Compra() { //Hibernate necesita un constructor vacío
+    }
 
+    // Constructores.
     public Compra(Jugador jugador, Videojuego videojuego, Date fechaCompra, BigDecimal precioFinal) {
         this.jugador = jugador;
         this.videojuego = videojuego;

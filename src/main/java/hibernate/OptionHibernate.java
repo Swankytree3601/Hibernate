@@ -1,162 +1,146 @@
 package hibernate;
 
-import manager.CasoUsoManager;
+import manager.CaseOfUseManager;
 import java.util.Scanner;
 
 public class OptionHibernate {
 
-    public void choseOption(){
-        Scanner sc = new Scanner(System.in);
+    private CaseOfUseManager manager;
+    private Scanner sc;
+
+    public void choseOption() {
+        manager = new CaseOfUseManager();
+        sc = new Scanner(System.in);
         int option;
 
         do {
-            System.out.println("\nSistema de gestión de videojuegos - Hibernate");
-            System.out.println("¿Qué quieres hacer?");
-            System.out.println("1. Probar conexión de la base de datos.");
-            System.out.println("2. Selecciones simples y Joins.");
-            System.out.println("3. Operaciones DML (Insert, Update, Delete).");
-            System.out.println("4. Procedimientos y Funciones.");
-            System.out.println("5. Ejecutar todo el caso de uso completo.");
+            System.out.println("\nSistema de videojuegos");
+            System.out.println("1. Probar conexion");
+            System.out.println("2. Selecciones y Joins");
+            System.out.println("3. Operaciones DML");
+            System.out.println("4. Procedimientos");
+            System.out.println("5. Caso completo");
             System.out.println("0. Salir");
-            System.out.print("Opción: ");
+            System.out.print("Opcion: ");
 
             option = sc.nextInt();
+            sc.nextLine();
 
             switch (option) {
                 case 1:
-                    option1();
+                    option1TestConnection();
                     break;
                 case 2:
-                    option2();
+                    option2RunQueries();
                     break;
                 case 3:
-                    option3();
+                    option3RunDML();
                     break;
                 case 4:
-                    option4();
+                    option4RunProcedures();
                     break;
                 case 5:
-                    option5();
+                    option5RunFullCase();
                     break;
                 case 0:
                     System.out.println("Saliendo...");
                     break;
                 default:
-                    System.out.println("Opción no válida");
+                    System.out.println("Opcion no valida");
             }
-
         } while (option != 0);
 
         sc.close();
     }
 
-    protected void option1(){
-        System.out.println("\nPROBANDO CONEXIÓN A BASE DE DATOS");
-        CasoUsoManager manager = new CasoUsoManager();
+    private void option1TestConnection() {
         try {
             manager.abrirSession();
-            System.out.println("Conexión exitosa a la base de datos");
-        } catch (Exception e) {
-            System.out.println("Error de conexión: " + e.getMessage());
-        } finally {
+            System.out.println("Conexion: OK");
             manager.cerrarSession();
+        } catch (Exception e) {
+            System.out.println("Conexión: error - " + e.getMessage());
         }
     }
 
-    protected void option2(){
-        System.out.println("\nSELECCIONES SIMPLES Y JOINS");
-        CasoUsoManager manager = new CasoUsoManager();
+    private void option2RunQueries() {
         try {
             manager.abrirSession();
-
+            System.out.println("\n--- Todos los videojuegos ---");
             manager.seleccionSimpleVideojuegos();
-            manager.seleccionSimpleJugadores();
-            manager.seleccionSimpleDesarrolladoras();
 
+            System.out.println("\n--- Videojuegos con desarrolladora ---");
             manager.joinVideojuegoDesarrolladora();
-            manager.joinCompraJugadorVideojuego();
-            manager.joinTriple();
 
+            System.out.println("\n--- Compras recientes ---");
+            manager.joinCompraJugadorVideojuego();
+
+            manager.cerrarSession();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            manager.cerrarSession();
         }
     }
 
-    protected void option3(){
-        System.out.println("\nOPERACIONES DML");
-        CasoUsoManager manager = new CasoUsoManager();
+    private void option3RunDML() {
         try {
             manager.abrirSession();
-
+            System.out.println("\n--- Insertar datos ---");
             manager.insertarDatosEjemplo();
+
+            System.out.println("\n--- Actualizar datos ---");
             manager.actualizarPrecios();
+
+            System.out.println("\n--- Eliminando compras antiguas ---");
             manager.eliminarComprasAntiguas();
 
+            manager.cerrarSession();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            manager.cerrarSession();
         }
     }
 
-    protected void option4(){
-        System.out.println("\nPROCEDIMIENTOS Y FUNCIONES");
-        CasoUsoManager manager = new CasoUsoManager();
+    private void option4RunProcedures() {
         try {
             manager.abrirSession();
 
-            Scanner sc = new Scanner(System.in);
-            System.out.print("Introduce nickname del jugador para estadísticas: ");
-            String nickname = sc.nextLine();
-            manager.procedimientoEstadisticasJugador(nickname);
+            System.out.print("\nNickname del jugador: ");
+            String nick = sc.nextLine();
+            manager.procedimientoEstadisticasJugador(nick);
 
-            System.out.print("\nIntroduce género para ver top juegos: ");
+            System.out.print("\nGenero para top juegos: ");
             String genero = sc.nextLine();
             manager.funcionTopJuegosPorGenero(genero, 5);
 
+            manager.cerrarSession();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            manager.cerrarSession();
         }
     }
 
-    protected void option5(){
-        System.out.println("\nEJECUTANDO CASO DE USO COMPLETO");
-        CasoUsoManager manager = new CasoUsoManager();
+    private void option5RunFullCase() {
         try {
             manager.abrirSession();
 
-            System.out.println("\n1. INSERTANDO DATOS DE EJEMPLO...");
+            System.out.println("\n--- 1. Insertando datos ---");
             manager.insertarDatosEjemplo();
 
-            System.out.println("\n2. SELECCIONES SIMPLES...");
+            System.out.println("\n--- 2. Listando juegos ---");
             manager.seleccionSimpleVideojuegos();
-            manager.seleccionSimpleJugadores();
 
-            System.out.println("\n3. JOINS...");
+            System.out.println("\n--- 3. Join con desarrolladora ---");
             manager.joinVideojuegoDesarrolladora();
-            manager.joinCompraJugadorVideojuego();
 
-            System.out.println("\n4. ACTUALIZACIONES...");
+            System.out.println("\n--- 4. Actualizando precios ---");
             manager.actualizarPrecios();
 
-            System.out.println("\n5. PROCEDIMIENTOS...");
-            manager.procedimientoEstadisticasJugador("gamer123");
-            manager.funcionTopJuegosPorGenero("Acción", 3);
+            System.out.println("\n--- 5. Estadísticas ---");
+            manager.procedimientoEstadisticasJugador("Coscu777");
 
-            System.out.println("\nCaso de uso completado exitosamente");
+            manager.cerrarSession();
+            System.out.println("\n--- CASO COMPLETADO ---");
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            manager.cerrarSession();
         }
     }
 }

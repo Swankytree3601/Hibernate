@@ -10,7 +10,7 @@ public class Jugador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idJugador") // Cambiado para coincidir con la BD
+    @Column(name = "idJugador")
     private int id;
 
     @Column(name = "nickname", nullable = false, unique = true, length = 50)
@@ -27,7 +27,9 @@ public class Jugador {
     private List<Compra> compras;
 
     // Constructores
-    public Jugador() {}
+
+    public Jugador(){ //Hibernate necesita un constructor vacío
+    }
 
     public Jugador(String nickname, String email, Date fechaRegistro) {
         this.nickname = nickname;

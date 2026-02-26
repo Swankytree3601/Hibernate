@@ -11,7 +11,7 @@ public class Videojuego {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idVideojuego") // Cambiado para coincidir con la BD
+    @Column(name = "idVideojuego")
     private int id;
 
     @Column(name = "titulo", nullable = false, length = 150)
@@ -28,14 +28,15 @@ public class Videojuego {
     private BigDecimal precio;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "desarrolladora_id", nullable = false) // Coincide con la BD
+    @JoinColumn(name = "desarrolladora_id", nullable = false)
     private Desarrolladora desarrolladora;
 
     @OneToMany(mappedBy = "videojuego", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Compra> compras;
 
     // Constructores
-    public Videojuego() {}
+    public Videojuego(){ //Hibernate necesita un constructor vacío
+    }
 
     public Videojuego(String titulo, String genero, Date fechaLanzamiento,
                       BigDecimal precio, Desarrolladora desarrolladora) {
