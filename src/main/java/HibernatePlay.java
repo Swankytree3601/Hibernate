@@ -9,5 +9,6 @@ public class HibernatePlay
     {
         OptionHibernate oh = new OptionHibernate();
         oh.choseOption();
+        String a;
     }
 }

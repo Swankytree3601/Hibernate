@@ -1,0 +1,288 @@
+<videojuegos>
+
+    <videojuego id="1">
+        <titulo>The Last of Us</titulo>
+        <genero>Acción</genero>
+        <subgenero>Supervivencia</subgenero>
+        <precio moneda="USD">59.99</precio>
+        <lanzamiento>2013-06-14</lanzamiento>
+        <clasificacion>18+</clasificacion>
+        <multijugador>No</multijugador>
+        <plataformas>
+            <plataforma>PS3</plataforma>
+            <plataforma>PS4</plataforma>
+            <plataforma>PS5</plataforma>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Naughty Dog</nombre>
+            <pais>USA</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="2">
+        <titulo>God of War</titulo>
+        <genero>Aventura</genero>
+        <subgenero>Acción</subgenero>
+        <precio moneda="USD">49.99</precio>
+        <lanzamiento>2018-04-20</lanzamiento>
+        <clasificacion>18+</clasificacion>
+        <multijugador>No</multijugador>
+        <plataformas>
+            <plataforma>PS4</plataforma>
+            <plataforma>PS5</plataforma>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Santa Monica Studio</nombre>
+            <pais>USA</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="3">
+        <titulo>The Legend of Zelda: Breath of the Wild</titulo>
+        <genero>Aventura</genero>
+        <subgenero>Mundo abierto</subgenero>
+        <precio moneda="USD">59.99</precio>
+        <lanzamiento>2017-03-03</lanzamiento>
+        <clasificacion>12+</clasificacion>
+        <multijugador>No</multijugador>
+        <plataformas>
+            <plataforma>Nintendo Switch</plataforma>
+            <plataforma>Wii U</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Nintendo</nombre>
+            <pais>Japón</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="4">
+        <titulo>Red Dead Redemption 2</titulo>
+        <genero>Acción</genero>
+        <subgenero>Mundo abierto</subgenero>
+        <precio moneda="USD">59.99</precio>
+        <lanzamiento>2018-10-26</lanzamiento>
+        <clasificacion>18+</clasificacion>
+        <multijugador>Sí</multijugador>
+        <plataformas>
+            <plataforma>PS4</plataforma>
+            <plataforma>Xbox One</plataforma>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Rockstar Games</nombre>
+            <pais>USA</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="5">
+        <titulo>Minecraft</titulo>
+        <genero>Sandbox</genero>
+        <subgenero>Construcción</subgenero>
+        <precio moneda="USD">29.99</precio>
+        <lanzamiento>2011-11-18</lanzamiento>
+        <clasificacion>7+</clasificacion>
+        <multijugador>Sí</multijugador>
+        <plataformas>
+            <plataforma>PC</plataforma>
+            <plataforma>PS4</plataforma>
+            <plataforma>Xbox One</plataforma>
+            <plataforma>Switch</plataforma>
+            <plataforma>Móvil</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Mojang Studios</nombre>
+            <pais>Suecia</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="6">
+        <titulo>Cyberpunk 2077</titulo>
+        <genero>RPG</genero>
+        <subgenero>Ciencia ficción</subgenero>
+        <precio moneda="USD">59.99</precio>
+        <lanzamiento>2020-12-10</lanzamiento>
+        <clasificacion>18+</clasificacion>
+        <multijugador>No</multijugador>
+        <plataformas>
+            <plataforma>PC</plataforma>
+            <plataforma>PS5</plataforma>
+            <plataforma>Xbox Series X</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>CD Projekt Red</nombre>
+            <pais>Polonia</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="7">
+        <titulo>FIFA 23</titulo>
+        <genero>Deportes</genero>
+        <subgenero>Fútbol</subgenero>
+        <precio moneda="USD">69.99</precio>
+        <lanzamiento>2022-09-30</lanzamiento>
+        <clasificacion>3+</clasificacion>
+        <multijugador>Sí</multijugador>
+        <plataformas>
+            <plataforma>PS5</plataforma>
+            <plataforma>Xbox Series X</plataforma>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>EA Sports</nombre>
+            <pais>USA</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="8">
+        <titulo>Fortnite</titulo>
+        <genero>Battle Royale</genero>
+        <subgenero>Shooter</subgenero>
+        <precio moneda="USD">0.00</precio>
+        <lanzamiento>2017-07-21</lanzamiento>
+        <clasificacion>12+</clasificacion>
+        <multijugador>Sí</multijugador>
+        <plataformas>
+            <plataforma>PC</plataforma>
+            <plataforma>PS5</plataforma>
+            <plataforma>Xbox Series X</plataforma>
+            <plataforma>Switch</plataforma>
+            <plataforma>Móvil</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Epic Games</nombre>
+            <pais>USA</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="9">
+        <titulo>Grand Theft Auto V</titulo>
+        <genero>Acción</genero>
+        <subgenero>Mundo abierto</subgenero>
+        <precio moneda="USD">39.99</precio>
+        <lanzamiento>2013-09-17</lanzamiento>
+        <clasificacion>18+</clasificacion>
+        <multijugador>Sí</multijugador>
+        <plataformas>
+            <plataforma>PS5</plataforma>
+            <plataforma>Xbox Series X</plataforma>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Rockstar Games</nombre>
+            <pais>USA</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="10">
+        <titulo>Hollow Knight</titulo>
+        <genero>Metroidvania</genero>
+        <subgenero>Acción</subgenero>
+        <precio moneda="USD">14.99</precio>
+        <lanzamiento>2017-02-24</lanzamiento>
+        <clasificacion>7+</clasificacion>
+        <multijugador>No</multijugador>
+        <plataformas>
+            <plataforma>PC</plataforma>
+            <plataforma>PS4</plataforma>
+            <plataforma>Switch</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Team Cherry</nombre>
+            <pais>Australia</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="11">
+        <titulo>Elden Ring</titulo>
+        <genero>RPG</genero>
+        <subgenero>Acción</subgenero>
+        <precio moneda="USD">59.99</precio>
+        <lanzamiento>2022-02-25</lanzamiento>
+        <clasificacion>16+</clasificacion>
+        <multijugador>Sí</multijugador>
+        <plataformas>
+            <plataforma>PS5</plataforma>
+            <plataforma>Xbox Series X</plataforma>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>FromSoftware</nombre>
+            <pais>Japón</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="12">
+        <titulo>Call of Duty: Modern Warfare II</titulo>
+        <genero>Shooter</genero>
+        <subgenero>Bélico</subgenero>
+        <precio moneda="USD">69.99</precio>
+        <lanzamiento>2022-10-28</lanzamiento>
+        <clasificacion>18+</clasificacion>
+        <multijugador>Sí</multijugador>
+        <plataformas>
+            <plataforma>PS5</plataforma>
+            <plataforma>Xbox Series X</plataforma>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Infinity Ward</nombre>
+            <pais>USA</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="13">
+        <titulo>Animal Crossing: New Horizons</titulo>
+        <genero>Simulación</genero>
+        <subgenero>Vida</subgenero>
+        <precio moneda="USD">59.99</precio>
+        <lanzamiento>2020-03-20</lanzamiento>
+        <clasificacion>3+</clasificacion>
+        <multijugador>Sí</multijugador>
+        <plataformas>
+            <plataforma>Nintendo Switch</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Nintendo</nombre>
+            <pais>Japón</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="14">
+        <titulo>Assassin's Creed Valhalla</titulo>
+        <genero>Acción</genero>
+        <subgenero>RPG</subgenero>
+        <precio moneda="USD">59.99</precio>
+        <lanzamiento>2020-11-10</lanzamiento>
+        <clasificacion>18+</clasificacion>
+        <multijugador>No</multijugador>
+        <plataformas>
+            <plataforma>PS5</plataforma>
+            <plataforma>Xbox Series X</plataforma>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Ubisoft Montreal</nombre>
+            <pais>Canadá</pais>
+        </desarrolladora>
+    </videojuego>
+
+    <videojuego id="15">
+        <titulo>League of Legends</titulo>
+        <genero>MOBA</genero>
+        <subgenero>Estrategia</subgenero>
+        <precio moneda="USD">0.00</precio>
+        <lanzamiento>2009-10-27</lanzamiento>
+        <clasificacion>12+</clasificacion>
+        <multijugador>Sí</multijugador>
+        <plataformas>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <desarrolladora>
+            <nombre>Riot Games</nombre>
+            <pais>USA</pais>
+        </desarrolladora>
+    </videojuego>
+
+</videojuegos>

@@ -66,14 +66,18 @@ public class OptionHibernate {
     private void option2RunQueries() {
         try {
             manager.abrirSession();
-            System.out.println("\n--- Todos los videojuegos ---");
+            System.out.println("\nTodos los videojuegos");
             manager.seleccionSimpleVideojuegos();
 
-            System.out.println("\n--- Videojuegos con desarrolladora ---");
+            System.out.println("\nVideojuegos con desarrolladora");
             manager.joinVideojuegoDesarrolladora();
 
-            System.out.println("\n--- Compras recientes ---");
+            System.out.println("\nCompras recientes");
             manager.joinCompraJugadorVideojuego();
+
+            System.out.println("\nSubconsulta: Precio superior a la media");
+            manager.subconsultaEjemplo();
+
 
             manager.cerrarSession();
         } catch (Exception e) {
@@ -84,13 +88,13 @@ public class OptionHibernate {
     private void option3RunDML() {
         try {
             manager.abrirSession();
-            System.out.println("\n--- Insertar datos ---");
+            System.out.println("\nInsertar datos");
             manager.insertarDatosEjemplo();
 
-            System.out.println("\n--- Actualizar datos ---");
+            System.out.println("\nActualizar datos");
             manager.actualizarPrecios();
 
-            System.out.println("\n--- Eliminando compras antiguas ---");
+            System.out.println("\nEliminando compras antiguas");
             manager.eliminarComprasAntiguas();
 
             manager.cerrarSession();
@@ -118,29 +122,34 @@ public class OptionHibernate {
     }
 
     private void option5RunFullCase() {
+
+        System.out.println("\nIniciando caso completo.");
+
         try {
             manager.abrirSession();
 
-            System.out.println("\n--- 1. Insertando datos ---");
+            System.out.println("\n1. Insertando datos");
             manager.insertarDatosEjemplo();
 
-            System.out.println("\n--- 2. Listando juegos ---");
+            System.out.println("\n2. Listando juegos");
             manager.seleccionSimpleVideojuegos();
 
-            System.out.println("\n--- 3. Join con desarrolladora ---");
+            System.out.println("\n3. Join con desarrolladora");
             manager.joinVideojuegoDesarrolladora();
 
-            System.out.println("\n--- 4. Actualizando precios ---");
+            System.out.println("\n4. Actualizando precios");
             manager.actualizarPrecios();
 
-            System.out.println("\n--- 5. Estadísticas ---");
+            System.out.println("\n5. Estadísticas");
             manager.procedimientoEstadisticasJugador("Coscu777");
 
             manager.cerrarSession();
-            System.out.println("\n--- CASO COMPLETADO ---");
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+
+        System.out.println("\nCaso completo terminado.");
+
     }
 }

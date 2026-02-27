@@ -58,6 +58,7 @@ public class CaseOfUseManager {
     }
 
     public void joinTriple() {
+        System.out.println("Joining triple");
         String hql = "SELECT j.nickname, v.titulo, d.nombre, c.fechaCompra " +
                 "FROM Compra c " +
                 "JOIN c.jugador j " +
@@ -68,6 +69,15 @@ public class CaseOfUseManager {
 
         for (Object[] fila : resultados) {
             System.out.println("  " + fila[0] + " compro " + fila[1] + " de " + fila[2] + " el " + fila[3]);
+        }
+    }
+
+    public void subconsultaEjemplo() {
+        String hql = "FROM Videojuego v WHERE v.precio > (SELECT AVG(v2.precio) FROM Videojuego v2)";
+        List<Videojuego> resultados = session.createQuery(hql, Videojuego.class).list();
+        System.out.println("  Videojuegos con precio superior a la media:");
+        for (Videojuego v : resultados) {
+            System.out.println("    " + v.getTitulo() + " - " + v.getPrecio() + "€");
         }
     }
 

@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 import static com.mongodb.client.model.Filters.*;
 
+/**
+ * @Autor Javier Tejera - 2 DAM
+ */
 public class MongoDBPlay {
     public static void main(String[] args) {
         try {
@@ -37,7 +40,7 @@ public class MongoDBPlay {
             Document juego3 = new Document("titulo", "FIFA 24")
                     .append("genero", "Deportes")
                     .append("precio", 69.99)
-                    .append("desarrolladora", new Document("nombre", "EA Sports") //Género de videojuegos
+                    .append("desarrolladora", new Document("nombre", "EA Sports") //Desarrolladora anidada
                             .append("pais", "Canadá")
                             .append("fundacion", 1991))
                     .append("jugadores", Arrays.asList("Messirve", "Coscu", "Momo"));
@@ -108,7 +111,16 @@ public class MongoDBPlay {
             System.out.println("Introduce el valor:");
             String valor = sc.nextLine();
 
-            FindIterable<Document> personalizado = collection.find(eq(campo, valor));
+            FindIterable<Document> personalizado;
+
+            if (campo.equals("precio")) {
+                double valorConvertido = Double.parseDouble(valor);
+                personalizado = collection.find(eq(campo, valorConvertido));
+            }
+            else{
+                personalizado = collection.find(eq(campo, valor));
+            }
+
             System.out.println("Resultados:");
 
             for (Document doc : personalizado) {

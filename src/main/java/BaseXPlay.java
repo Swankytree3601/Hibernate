@@ -1,49 +1,33 @@
 import org.basex.api.client.ClientSession;
-import java.util.Scanner;
 
+import java.nio.file.Paths;
+
+/**
+ * @Autor Javier Tejera - 2 DAM
+ */
 public class BaseXPlay {
     public static void main(String[] args) {
+
         try (ClientSession session = new ClientSession("localhost", 1984, "admin", "admin")) {
 
-            System.out.println("Conexión a BaseX");
+            System.out.println("Conexión a BaseX correctamente.");
 
-            // Crear base de datos
+            String xmlPath = Paths.get("src/main/resources/videojuegos.xml").toAbsolutePath().toString();
+
+            // Crear base de datos desde el archivo xml
             try {
-                session.execute("CREATE DB videojuegos");
+                session.execute("CREATE DB videojuegos " + xmlPath); //Si no existe
                 System.out.println("Base de datos 'videojuegos' creada");
             } catch (Exception e) {
-                System.out.println("La base de datos ya existe");
+                System.out.println("La base de datos 'videojuegos' ya existe");
             }
 
-            // Insertar datos con XQUERY usando tres comillas
-            String xmlData =
-                    """
-                    <videojuegos>
-                      <videojuego id='1'>
-                        <titulo>The Last of Us</titulo>
-                        <genero>Acción</genero>
-                        <precio>59.99</precio>
-                        <desarrolladora>
-                          <nombre>Naughty Dog</nombre>
-                          <pais>USA</pais>
-                        </desarrolladora>
-                      </videojuego>
-                      <videojuego id='2'>
-                        <titulo>God of War</titulo>
-                        <genero>Aventura</genero>
-                        <precio>49.99</precio>
-                        <desarrolladora>
-                          <nombre>Santa Monica</nombre>
-                          <pais>USA</pais>
-                        </desarrolladora>
-                      </videojuego>
-                    </videojuegos>
-                    """;
-
-            // Insertar escapando las comillas correctamente
-            session.execute("OPEN videojuegos");
-            session.execute("XQUERY db:add('videojuegos', \"" + xmlData.replace("\"", "\\\"") + "\", 'videojuegos.xml')");
-            System.out.println("Datos insertados correctamente");
+            try{
+                session.execute("OPEN videojuegos");
+            }catch (Exception e){
+                System.out.println("Error: " + e.getMessage());
+                return;
+            }
 
             // Consultas
             System.out.println("\nTítulos:");
@@ -53,8 +37,6 @@ public class BaseXPlay {
             System.out.println("\nVideojuegos caros:");
             String caros = session.execute("XQUERY //videojuego[precio > 50]/titulo");
             System.out.println(caros);
-
-            session.close();
 
         } catch (Exception e) {
             e.printStackTrace();
